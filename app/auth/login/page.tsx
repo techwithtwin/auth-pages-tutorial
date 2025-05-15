@@ -1,4 +1,5 @@
 "use client";
+import ShowPasswordIcon from "@/components/show-password";
 import {
   Box,
   Button,
@@ -16,7 +17,6 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { HiEyeOff } from "react-icons/hi";
 
 const Login = () => {
   const [open, setOpen] = useState(false);
@@ -46,12 +46,14 @@ const Login = () => {
         >
           <Stack gap="6">
             <Flex justify="center">
-              <Image
-                src="/logo.png"
-                height={"150px"}
-                transform="scale(0.7)"
-                alt="logo"
-              />
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  height={"150px"}
+                  transform="scale(0.7)"
+                  alt="logo"
+                />
+              </Link>
             </Flex>
 
             <Stack gap={{ base: "2", md: "3" }} textAlign="center">
@@ -98,7 +100,11 @@ const Login = () => {
 
                 <Field.Root required>
                   <Field.Label>Password</Field.Label>
-                  <InputGroup endElement={<HiEyeOff />}>
+                  <InputGroup
+                    endElement={
+                      <ShowPasswordIcon open={open} onToggle={setOpen} />
+                    }
+                  >
                     <Input
                       id="password"
                       ref={inputRef}
@@ -117,24 +123,20 @@ const Login = () => {
                   <Checkbox.Control />
                   <Checkbox.Label>Remember me</Checkbox.Label>
                 </Checkbox.Root>
-
-                <Button
-                  fontSize={{ base: "sm", sm: "md" }}
-                  size="sm"
-                  variant="plain"
-                  color="#9E8625"
-                  textDecor="underline"
-                >
-                  Forgot password?
-                </Button>
+                <Link href="/auth/reset">
+                  <Button
+                    fontSize={{ base: "sm", sm: "md" }}
+                    size="sm"
+                    variant="plain"
+                    color="#9E8625"
+                    textDecor="underline"
+                  >
+                    Forgot password?
+                  </Button>
+                </Link>
               </HStack>
               <Stack gap="4">
-                <Button
-                  bg="#9E8625"
-                  color="white"
-                  type="submit"
-                  _hover={{ backgroundColor: "yellow" }}
-                >
+                <Button bg="#9E8625" color="white" type="submit">
                   Sign in
                 </Button>
               </Stack>
