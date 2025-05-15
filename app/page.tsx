@@ -26,7 +26,12 @@ const Home = () => {
           </Link>
         </Stack>
       </Box>
-      <Heading ml="4" textShadow="2xl" color="rgba(245, 226, 197, 1)">
+      <Heading
+        fontSize="3xl"
+        ml="4"
+        textShadow="2xl"
+        color="rgba(245, 226, 197, 1)"
+      >
         Welcome home, TechWithTwin
       </Heading>
     </Flex>
